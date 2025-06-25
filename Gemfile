@@ -47,4 +47,5 @@ group :development, :test do
 
   gem "rspec-rails", require: false
   gem "guard-rspec", require: false
+  gem "webmock"
 end
