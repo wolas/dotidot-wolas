@@ -1,8 +1,31 @@
 # Omakase Ruby styling for Rails
 inherit_gem: { rubocop-rails-omakase: rubocop.yml }
 
-# Overwrite or add rules to create your own house style
-#
-# # Use `[a, [b, c]]` not `[ a, [ b, c ] ]`
-# Layout/SpaceInsideArrayLiteralBrackets:
-#   Enabled: false
+AllCops:
+  NewCops: enable
+  TargetRubyVersion: 3.3
+  Exclude:
+    - 'db/**/*'
+    - 'vendor/**/*'
+    - 'bin/**/*'
+
+Rails:
+  Enabled: true
+
+Metrics/MethodLength:
+  Max: 15 # Allow slightly longer methods for Scrapper#call
+
+Metrics/BlockLength:
+  Max: 30 # Allow longer blocks in tests
+
+Style/StringLiterals:
+  EnforcedStyle: double_quotes # Use double quotes for strings
+
+Style/FrozenStringLiteralComment:
+  Enabled: false # Disable for simplicity; enable later if needed
+
+Naming/VariableNumber:
+  Enabled: false # Allow non-sequential variable names (e.g., url2)
+
+Layout/LineLength:
+  Max: 120 # Allow longer lines for readability

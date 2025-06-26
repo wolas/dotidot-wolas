@@ -47,5 +47,9 @@ group :development, :test do
 
   gem "rspec-rails", require: false
   gem "guard-rspec", require: false
+  gem "guard-rubocop", require: false
   gem "webmock"
+  gem "rubocop"
+  gem "rubocop-rails"
+  gem "rubocop-rspec"
 end

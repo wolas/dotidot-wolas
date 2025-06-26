@@ -4,7 +4,7 @@ RSpec.describe Scrapper do
   subject { described_class.new(url, fields)  }
 
   let(:url) { 'https://www.alza.cz/aeg-7000-prosteam-lfr73964cc-d7635493.htm' }
-  let(:fixture_path) { Rails.root.join('spec', 'fixtures', 'alza.cz.html') }
+  let(:fixture_path) { Rails.root.join("spec/fixtures/alza.cz.html") }
   let(:fields) { { meta: [] } }
   let(:fixture_content) { File.read(fixture_path) }
 
@@ -36,7 +36,7 @@ RSpec.describe Scrapper do
   end
 
   describe "metadata extraction" do
-    let(:fields) { { meta: ["keywords", "twitter:image"] } }
+    let(:fields) { { meta: [ "keywords", "twitter:image" ] } }
 
     context "on successful request" do
       before do

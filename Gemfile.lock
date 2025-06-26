@@ -135,6 +135,9 @@ GEM
       guard (~> 2.1)
       guard-compat (~> 1.1)
       rspec (>= 2.99.0, < 4.0)
+    guard-rubocop (1.5.0)
+      guard (~> 2.0)
+      rubocop (< 2.0)
     hashdiff (1.2.0)
     i18n (1.14.7)
       concurrent-ruby (~> 1.0)
@@ -329,6 +332,9 @@ GEM
       rubocop (>= 1.72)
       rubocop-performance (>= 1.24)
       rubocop-rails (>= 2.30)
+    rubocop-rspec (3.6.0)
+      lint_roller (~> 1.1)
+      rubocop (~> 1.72, >= 1.72.1)
     ruby-progressbar (1.13.0)
     securerandom (0.4.1)
     shellany (0.0.1)
@@ -397,12 +403,16 @@ DEPENDENCIES
   brakeman
   debug
   guard-rspec
+  guard-rubocop
   kamal
   pg (~> 1.1)
   puma (>= 5.0)
   rails (~> 8.0.2)
   rspec-rails
+  rubocop
+  rubocop-rails
   rubocop-rails-omakase
+  rubocop-rspec
   solid_cable
   solid_cache
   solid_queue

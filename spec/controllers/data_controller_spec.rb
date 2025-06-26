@@ -6,7 +6,7 @@ RSpec.describe DataController, type: :controller do
     let(:fields) { ActionController::Parameters.new(price: ".price-box__price", rating_count: ".ratingCount", rating_value: ".ratingValue").permit! }
     let(:sorted_fields_string) { fields.to_h.sort.to_s }
     let(:cache_key) { "requests/#{Digest::MD5.hexdigest(url)}/#{Digest::MD5.hexdigest(sorted_fields_string)}" }
-    let(:scraper_result) { { price: "", rating_count: "25 hodnocení", rating_value: "4,9" }}
+    let(:scraper_result) { { price: "", rating_count: "25 hodnocení", rating_value: "4,9" } }
     let(:scraper_error) { nil }
     let(:scraper_success) { true }
     let(:cached_response)  { { result: scraper_result, error: scraper_error, success: scraper_success } }
@@ -25,7 +25,7 @@ RSpec.describe DataController, type: :controller do
         get :show, params: { url: url, fields: fields }
 
         expect(response).to have_http_status(:ok)
-        expect(JSON.parse(response.body)).to eq(scraper_result.stringify_keys)
+        expect(response.parsed_body).to eq(scraper_result.stringify_keys)
       end
     end
 
@@ -38,7 +38,7 @@ RSpec.describe DataController, type: :controller do
         get :show, params: { url: url, fields: fields }
 
         expect(response).to have_http_status(:ok)
-        expect(JSON.parse(response.body)).to eq(scraper_result.stringify_keys)
+        expect(response.parsed_body).to eq(scraper_result.stringify_keys)
       end
     end
 
@@ -57,7 +57,7 @@ RSpec.describe DataController, type: :controller do
         get :show, params: { url: url, fields: reordered_fields }
 
         expect(response).to have_http_status(:ok)
-        expect(JSON.parse(response.body)).to eq(scraper_result.stringify_keys)
+        expect(response.parsed_body).to eq(scraper_result.stringify_keys)
       end
     end
 
@@ -78,7 +78,7 @@ RSpec.describe DataController, type: :controller do
         get :show, params: { url: url, fields: fields }
 
         expect(response).to have_http_status(:unprocessable_entity)
-        expect(JSON.parse(response.body)).to eq(scraper_result.stringify_keys)
+        expect(response.parsed_body).to eq(scraper_result.stringify_keys)
       end
     end
 
